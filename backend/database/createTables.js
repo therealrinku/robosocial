@@ -2,27 +2,27 @@ const db = require("./db");
 
 const createPostsTableQuery = `
   CREATE TABLE IF NOT EXISTS posts (
-    post_uid UUID DEFAULT uuid_generate_v4() NOT NULL,
+    post_uid SERIAL PRIMARY KEY,
     owner_uid TEXT NOT NULL,
     image_url TEXT NOT NULL,
     status TEXT,
     posted_date TEXT NOT NULL,
-    likers ARRAY,
-    post_id UUID DEFAULT uuid_generate_v4(),
-    dislikers ARRAY
+    likers TEXT[],
+    post_id SERIAL,
+    dislikers TEXT[]
 );
 `;
 
 const createUsersTableQuery = `
   CREATE TABLE IF NOT EXISTS users (
-    uid UUID DEFAULT uuid_generate_v4() NOT NULL,
+    uid SERIAL PRIMARY KEY,
     email TEXT,
     username TEXT,
     profile_image_url TEXT,
     joined_date TEXT,
-    followers ARRAY,
-    following ARRAY,
-    saved_posts_uids ARRAY,
+    followers TEXT[],
+    following TEXT[],
+    saved_posts_uids TEXT[],
     password TEXT,
     bio TEXT
 );
@@ -30,7 +30,7 @@ const createUsersTableQuery = `
 
 const createNotificationsTableQuery = `
   CREATE TABLE IF NOT EXISTS notifications (
-    notification_uid UUID DEFAULT uuid_generate_v4() NOT NULL,
+    notification_uid SERIAL PRIMARY KEY,
     notification TEXT,
     owner_uid TEXT,
     interactor_uid TEXT,
@@ -42,13 +42,13 @@ const createNotificationsTableQuery = `
 
 const createCommentsTableQuery = `
   CREATE TABLE IF NOT EXISTS comments (
-    comment_uid UUID DEFAULT uuid_generate_v4() NOT NULL,
+    notification_uid SERIAL PRIMARY KEY,
     comment TEXT,
     commenter_uid TEXT,
     post_uid TEXT,
     post_owner_uid TEXT,
     posted_date TEXT,
-    likers Array
+    likers TEXT[]
 );
 `;
 

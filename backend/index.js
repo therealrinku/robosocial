@@ -8,7 +8,8 @@ app.use(express.json());
 app.use(cors());
 dotenv.config();
 
-//server setup
+//server setup 
+//
 const port = process.env.PORT || 4000;
 const server = http.createServer(app);
 

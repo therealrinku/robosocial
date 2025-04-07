@@ -1,4 +1,3 @@
-import styles from "./PostUploadView.module.scss";
 import { useDropzone } from "react-dropzone";
 import { useCallback } from "react";
 import { FiImage } from "react-icons/fi";

@@ -1,5 +1,5 @@
 import { Fragment, useState } from "react";
-import { AiOutlinePlusSquare, AiOutlinePoweroff, AiOutlineSetting } from "react-icons/all";
+import { AiOutlinePlusSquare, AiOutlinePoweroff, AiOutlineSetting, FiClock } from "react-icons/all";
 import { useHistory } from "react-router-dom";
 import ProfilePicPlaceholder from "../../assets/avatar.jpg";
 import lazyLoadImage from "../../utilities/lazyLoadImage";
@@ -72,6 +72,12 @@ const ProfileSummary = ({
                 <b>{profileData.following_count || 0}</b> following
               </button>
             </div>
+          )}
+
+          {profileData.joined_date && (
+            <p className="mt-3 flex items-center gap-2">
+              <FiClock /> Joined on {new Date(profileData.joined_date).toDateString()}
+            </p>
           )}
 
           <br />

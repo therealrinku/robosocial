@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import { useState } from "react";
 import * as postsActions from "../../redux/post/postsActions";
-import styles from "./CommentInput.module.scss";
 
 type CommentInputTypes = {
   post_uid: string;
@@ -49,10 +48,12 @@ const CommentInput = ({
   };
 
   return (
-    <div className={`${styles.CommentInput} border px-3 text-sm`}>
-      <form onSubmit={addComment}>
+    <div className={`w-full bg-white border px-5 text-sm mb-5`}>
+      <form onSubmit={addComment} className="w-full flex justify-between py-3">
         <input type="text" value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Add comment.." />
-        <button className="text-[#EE323D]" disabled={comment.trim().length <= 3 || addingComment}>Post</button>
+        <button className="text-[#EE323D]" disabled={comment.trim().length <= 3 || addingComment}>
+          Post
+        </button>
       </form>
     </div>
   );
